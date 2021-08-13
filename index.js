@@ -151,7 +151,6 @@ function findById(movies, id) {
     } 
   }
 
-
 return null
 }
 
@@ -177,16 +176,18 @@ return null
  */
 function filterByGenre(movies, genre) {
 
-  // if (movies.length === 0){
-  //   return [];
-  // }
+  if (movies.length === 0){
+    return [];
+  }
 
+let nameByGenre = [];
+for(const movie of movies) {
   
-
-  // const result = movies.filter(movie => movie.genre === genre) 
-  // return result 
-
-
+  if (movie.genre.toLowerCase().includes(genre.toLowerCase())){
+    nameByGenre.push(movie)
+  }
+}
+return nameByGenre
 }
 
 /**
