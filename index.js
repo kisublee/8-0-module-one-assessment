@@ -146,11 +146,13 @@ function findById(movies, id) {
   let  movieTitle = {};
   for (const movie of movies) {
     if (movie.imdbID === id) {
-      movieTitle = movie
-    }
+      // movieTitle = movie
+      return movieTitle = movie
+    } 
   }
 
-return movieTitle
+
+return null
 }
 
 /**
@@ -173,7 +175,19 @@ return movieTitle
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(movies, genre) {
+
+  // if (movies.length === 0){
+  //   return [];
+  // }
+
+  
+
+  // const result = movies.filter(movie => movie.genre === genre) 
+  // return result 
+
+
+}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
