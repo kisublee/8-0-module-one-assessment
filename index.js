@@ -155,19 +155,19 @@ return rated
  */
 function findById(movies, id) {
 
-  if (movies.length === 0){
-    return null
+  if (movies.length === 0){ // Define a gaurd clouse
+    return null 
   }
 
-  let  movieTitle = {};
-  for (const movie of movies) {
-    if (movie.imdbID === id) {
-      // movieTitle = movie
-      return movieTitle = movie
+  let  movieTitle = {}; // Define a default value
+  for (const movie of movies) { // Loop through
+    if (movie.imdbID === id) { 
+    
+      return movieTitle = movie // return movie.title if the parameter 'id' matches with movie.imdbID
     } 
   }
 
-return null
+return null // return null if the parameter id doesn't match with any.
 }
 
 /**
@@ -199,8 +199,9 @@ function filterByGenre(movies, genre) {
 let nameByGenre = [];
 for(const movie of movies) {
   
-  if (movie.genre.toLowerCase().includes(genre.toLowerCase())){
-    nameByGenre.push(movie)
+  if (movie.genre.toLowerCase().includes(genre.toLowerCase())){ // Make case-insensitive by defining 
+    // both the paramter to beLowerCased and movie.genre to be LowerCased
+    nameByGenre.push(movie) // IF genre is present in movie.genre, push movie, an object, to the array
   }
 }
 return nameByGenre
@@ -230,17 +231,15 @@ return nameByGenre
  */
 function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
 
+let listOfMovies = []; // Define a default value
 
-let listOfMovies = [];
-
-for (const movie of movies) {
+for (const movie of movies) { // Loop through
  
-  if (movie.released.split(" ")[2]<= year) {
-    listOfMovies.push(movie)
+  if (movie.released.split(" ")[2]<= year) { // Split movie.released and access the year positioned at index[2] 
+    // and IF it is less or equa to the given parameter 'year'
+    listOfMovies.push(movie) // Push movie, an object, to the array
   }
-
 }
-
 return listOfMovies
 }
 
