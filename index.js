@@ -239,7 +239,29 @@ return listOfMovies
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie(movies) {
+
+if (movies.length === 0) {
+  return null
+}
+
+
+let mostProfitableMovie = ""
+
+let highest = exampleMovies[0].boxOffice
+let starting = Number(highest.replace(/[^0-9.-]+/g,""));
+
+  for (const movie of movies) {
+  let number = Number(movie.boxOffice.replace(/[^0-9.-]+/g,""));
+  if (number > starting) {
+    starting = number
+    mostProfitableMovie = movie.title
+  }
+}
+
+return mostProfitableMovie
+
+}
 
 // Do not change anything below this line.
 module.exports = {
