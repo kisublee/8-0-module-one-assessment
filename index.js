@@ -108,7 +108,20 @@ return Number(avg)
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+function countByRating(movies) {
+
+  if (movies.length === 0){
+    return {};
+  }
+
+let rated = {};
+movies.forEach(function(movie) {
+  rated[movie.rated] ? rated[movie.rated] ++ : rated[movie.rated] =1;
+})
+
+return rated
+
+}
 
 /**
  * findById()
