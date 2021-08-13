@@ -137,7 +137,21 @@ return rated
       // Toy Story 4
     };
  */
-function findById() {}
+function findById(movies, id) {
+
+  if (movies.length === 0){
+    return null
+  }
+
+  let  movieTitle = {};
+  for (const movie of movies) {
+    if (movie.imdbID === id) {
+      movieTitle = movie
+    }
+  }
+
+return movieTitle
+}
 
 /**
  * filterByGenre()
