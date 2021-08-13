@@ -30,9 +30,9 @@ const exampleMovies = require("./movies");
  */
 function getAllMovieTitles(movies) {
 
-  let movieTitle = [];
-  for (const movie of movies) {
-    movieTitle.push(movie.title)
+  let movieTitle = []; // Define a default value
+  for (const movie of movies) { // Loop through the array 'movies'
+    movieTitle.push(movie.title) // IF title is present in any elements of movies, push it
   }
 
   return movieTitle
@@ -51,19 +51,19 @@ function getAllMovieTitles(movies) {
  */
 function getHighestMetascore(movies) {
 
-  if (movies.length === 0){
+  if (movies.length === 0){ // Define a guard clause
     return 0
   }
 
-  let highest = movies[0].metascore;
+  let highest = movies[0].metascore; // Set a starting value to compare with
 
-  for (let movie of movies){
-    if (highest < movie.metascore) {
-      highest = movie.metascore
+  for (let movie of movies){ // Loop through 
+    if (highest < movie.metascore) { // IF the starting value is less than other element's metascore
+      highest = movie.metascore // Reassign it to the element's metascore
     }
   }
   
-  return Number(highest)
+  return Number(highest) // Return in number
 
 }
 
@@ -84,16 +84,16 @@ function getAverageIMDBRating(movies) {
     return 0
   }
 
-let avg = 0
-let total = 0
+// let avg = 0 // Realized I don't need this
+let total = 0 // Declare a variable to hold an accumulated value 
 
-for (const movie of movies) {
-  total += Number(movie.imdbRating)
+for (const movie of movies) { // Loop through
+  total += Number(movie.imdbRating) // Add up movie.imdbRating and reassign the variable 'total' in Number
 }
 
-avg = total / movies.length
+// avg = total / movies.length // I realized I don't this either 
 
-return Number(avg)
+return Number(total / movies.length)
 
 }
 
@@ -110,14 +110,30 @@ return Number(avg)
  */
 function countByRating(movies) {
 
-  if (movies.length === 0){
+  if (movies.length === 0){  // Guard clause
     return {};
   }
 
-let rated = {};
-movies.forEach(function(movie) {
-  rated[movie.rated] ? rated[movie.rated] ++ : rated[movie.rated] =1;
+// Trying forEach
+
+let rated = {}; // Define a default value
+movies.forEach(function(movie) { // loop through the array 'movies', movie =  each element 
+  rated[movie.rated] ? rated[movie.rated] ++ : rated[movie.rated] =1; // IF movie's rated is true, increament by 1, OTHERWISE set it at 1
 })
+
+// Manually solve this problem
+// let rated = {}
+
+// for (const movie of movies) { // loop through = > movie is each element 
+//   if (rated[movie.rated]) { // IF the key rated in the new object Rated is present in movie
+//     rated[movie.rated] += 1 // Increment the value of the key rated by 1 
+//   } 
+//   else {
+//     rated[movie.rated] = 1 // IF it is not repeating, it is set at 1 because if it exists, it is 1
+//   }
+  
+// }
+
 
 return rated
 
