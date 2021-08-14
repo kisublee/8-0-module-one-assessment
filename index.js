@@ -254,29 +254,79 @@ return listOfMovies
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
+
+
+///----------------------- Helper Function-------------------------------------- 
+// function toNum (currency) {
+//   let num = '1234567890'
+//   let add = ""
+//   let splitCurrency = currency.split("")
+//   for  (const i of splitCurrency) {
+//     if (num.includes(i)) {
+//       add += i
+//     }
+//   }
+//   return Number(add)
+// }
+
+// console.log(toNum("$434,038,008")) //=> 52433235
+
+
 function getBiggestBoxOfficeMovie(movies) {
+ // ----------------------1st solution----------------------------------------- 
+  
+// if (movies.length === 0) return null // guard clause
+// let biggestHit = "" // Reassign later 
 
-if (movies.length === 0) {
-  return null
-}
+// let highest = 0
+// console.log(highest) = 700426566
 
+  // for (let movie of movies) { // loop through
+  //
+  //   if (toNum(movie.boxOffice) > highest) {
+  //     highest = toNum(movie.boxOffice)
+  //     biggestHit = movie.title
+  //   }
+  // }
 
-let mostProfitableMovie = ""
+//---------------------------2nd solution----------------------------------------
+if (movies.length === 0) return null // guard clause
+let biggestHit = "" // Reassign later 
+let starting = 0 
 
-let highest = exampleMovies[0].boxOffice
-let starting = Number(highest.replace(/[^0-9.-]+/g,""));
-
-  for (const movie of movies) {
-  let number = Number(movie.boxOffice.replace(/[^0-9.-]+/g,""));
-  if (number > starting) {
-    starting = number
-    mostProfitableMovie = movie.title
+  for (let movie of movies) {
+    let numBoxOffice = Number(movie.boxOffice.slice(1).split(",").join("")) 
+    // slice => remove $ and create an array with the rest. Split the values inside the new sliced array
+    // by , and join them back without space.
+    if (numBoxOffice > starting) {
+      starting = numBoxOffice
+      biggestHit = movie.title
+    }
   }
-}
+//---------------------------3rd solution----------------------------------------
 
-return mostProfitableMovie
+ 
+// if (movies.length === 0) { // Define a gaurd clause
+//   return null
+// }
 
+// let mostProfitableMovie = "" // Declare a variable to hold a title of movie with the higest boxOffice
+
+// let highest = exampleMovies[0].boxOffice // Set a starting point to compare it with others
+// let starting = Number(highest.replace(/[^0-9.-]+/g,""));
+
+//   for (const movie of movies) {
+//   let number = Number(movie.boxOffice.replace(/[^0-9.-]+/g,""));
+//   if (number > starting) {
+//     starting = number
+//     mostProfitableMovie = movie.title
+//   }
+// }
+
+// return mostProfitableMovie
+  return biggestHit
 }
+// console.log(getBiggestBoxOfficeMovie(exampleMovies))
 
 // Do not change anything below this line.
 module.exports = {
